@@ -1,0 +1,10 @@
+{
+  "list" : [
+    {"position" : "人事行政专员","depart" : "管理部","num" : "2人","location" : "上海"},
+    {"position" : "数据开发项目经理","depart" : "产品部","num" : "3人","location" : "上海"},
+    {"position" : "大数据研发","depart" : "产品部","num" : "10人","location" : "上海"},
+    {"position" : "大数据分析","depart" : "产品部","num" : "5人","location" : "上海"},
+    {"position" : "大数据研发（应届生）","depart" : "产品部","num" : "6人","location" : "上海"},
+    {"position" : "数据开发工程师","depart" : "产品部","num" : "6人","location" : "上海"}
+  ]
+}

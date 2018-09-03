@@ -1,0 +1,1 @@
+/** * Created by lenovo on 2017/2/6. */$(document).ready(function () {    var url = "http://153.37.149.247:80";    $("#navbar").load("/common/navbar.html" + '?tmp=' + Math.random().toString());    $("#footer").load("/common/footer.html" + '?tmp=' + Math.random().toString());            });

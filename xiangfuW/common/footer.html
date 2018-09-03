@@ -1,0 +1,106 @@
+<footer class="footer">
+  
+  <div class="contact" id="contact">
+    <div class="footnav">
+      <ul class="titlelist">
+        <!--<li>-->
+          <!--<p>关于我们</p>-->
+          <!--<ul class="detaillist">-->
+            <!--<li><a href="../aboutUs/aboutus.html">公司简介</a></li>-->
+            <!--<li><a href="../aboutUs/structure.html">组织架构</a></li>-->
+            <!--<li><a href="../aboutUs/compcourse.html">公司历程</a></li>-->
+            <!--<li><a href="../aboutUs/certification.html">技术认证</a></li>-->
+            <!--<li><a href="https://jobs.51job.com/shanghai-ypq/101642667.html?s=04" target="_blank">招贤纳士</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<p>业务创新</p>-->
+          <!--<ul class="detaillist">-->
+            <!--<li><a href="../business/finance.html">互联网金融</a></li>-->
+            <!--<li><a href="../business/virtual.html">虚拟信用卡</a></li>-->
+            <!--<li><a href="../business/dot.html">网点布局优化</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<p>数据应用</p>-->
+          <!--<ul class="detaillist">-->
+            <!--<li><a href="../business/banknote.html"> 现钞管理优化</a></li>-->
+           <!---->
+            <!--<li><a href="../business/realtime.html">实时数据应用</a></li>-->
+            <!--<li><a href="../business/earlywarning.html">合规风险预警</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<p>科技支撑</p>-->
+          <!--<ul class="detaillist">-->
+            <!--<li><a href="../business/service.html">科技治理服务</a></li>-->
+            <!--<li><a href="../business/datacenter.html">数据中心</a></li>-->
+            <!--<li><a href="../business/application.html">应用性能管理</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+     
+      </ul>
+      <div class="location">
+          <!--<p>总部地址</p>-->
+          <!--<div class="detaillist">-->
+            <!--<div><label for="">地址 :</label>-->
+              <!--<p>上海市杨浦区隆昌路619号1号楼C区202室</p></div>-->
+            <!--<div><label for="">邮编 :</label>-->
+              <!--<p>200090</p></div>-->
+            <!--<div><label for="">电话 : </label>-->
+              <!--<p>021-55969576</p></div>-->
+            <!--<div><label for="">邮箱 : </label>-->
+              <!--<p>xiangfukj@xiangfucn.com</p></div>-->
+          <!--</div>-->
+        </li>
+      </div>
+    
+    </div>
+  
+  </div>
+  <div class="blogroll">
+    <hr>
+    <div class="wrap bottom" id="footerBottom">
+    
+    </div>
+  </div>
+</footer>
+<!--<script src="../Public/Web/js/footer.js"></script>-->
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      type: "get",
+      url : 'http://153.37.149.247:80/sinoWeb/parameter/getParams',
+      datatype: "json",
+      crossDomain: true === !(document.all),
+      success: function (data) {
+     
+        var obj = eval(data);
+        var list = obj.data.list;
+        var str = '<p class="copyright">' + list[0].paramVal + '<span id="strcompanyInf"></span>'
+            + '<br>' + list[2].paramVal;
+        var slogan = '<p style="width: 113px;">' + list[1].paramVal + '</p>';
+        $("#footerBottom").html(str);
+        $("#slogan").html(slogan);
+      }
+    });
+    $.ajax({
+      type: "get",
+      url: "http://153.37.149.247:80/sinoWeb/ourself/findOurself",
+      crossDomain: true === !(document.all),
+      datatype: "json",
+      success: function (data) {
+         var obj = eval(data);
+         var listFirst = obj.data.list.first;
+         var headAddress = '<p>'+listFirst[0].TITLE+'</p><div class="detaillist">' +
+             '<div><label for="">公司地址 : </label><p>'+listFirst[0].ADDRESS+'</p></div>' +
+             '<div><label for="">邮编编码 : </label><p>'+listFirst[0].POSTAL+'</p></div>' +
+             '<div><label for="">服务热线 : </label><p>'+listFirst[0].FAX+'</p></div>' +
+             '<div><label for="">联系电话 : </label><p>'+listFirst[0].TELEPHONE+'</p></div>' +
+             '<div><label for="">电子邮箱 : </label><p>'+listFirst[0].SERVE_TEL+'</p></div></div>'
+        
+         $(".location").html(headAddress);
+      }
+    });
+  });
+</script>

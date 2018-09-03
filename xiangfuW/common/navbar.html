@@ -1,0 +1,206 @@
+<header class="header">
+  <div class='topnav'>
+    <h1 class="fl">
+      <a href="../index.html" class="fl logo">
+        <img src="../Public/Web/images/logo.png">
+      </a>
+    </h1>
+    <nav class="nav hidden-sm hidden-xs">
+      <ul class="fix" id="menuLevel1">
+
+      </ul>
+    </nav>
+    <div class="baaner_2" id="menuLevel2">
+
+    </div>
+    <label id="menu" class="visible-sm-inline-block visible-xs-inline-block" for="toggleCheckbox">
+      <img src="../Public/Web/images/menu.png" alt="">
+    </label>
+    <input id="toggleCheckbox" type="checkbox">
+    <div id="collapse">
+      <ul class="nav nav-collapse ememem hidden-lg hidden-md" id="nav-collapse">
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  $(document).ready(function () {
+    $.ajax(
+        {
+          type: 'post',
+          url: "http://153.37.149.247:80/sinoWeb/navigation/findNavigation",
+          dataType: 'json',
+          crossDomain: true === !(document.all),
+          success: function (data) {
+                          var obj = eval(data);
+                          var list = obj.data.list;
+                       
+                          var str = "";
+                          var sublist = "";
+                          var footerlist = "";
+                          var menuItem = [],
+                              menuItema = [];
+                          var footlist = [];
+                          for (var i = 0; i < list.length; i++) {
+                              menuItema[i] = $('<a href="' + obj.data.list[i].subUrl + '?navid=' + obj.data.list[i].id + '">' + obj.data.list[i].subTitle +
+                                  '</a>');
+                              menuItem[i] = $('<li class="menu"></li>');
+                              $(menuItem[i]).append(menuItema[i]);
+
+                              str += ' <li id="menu' + i + '" _t_nav="attr' + i + '"><a class="navFisrt" _id="' + list[i].id + '"  hrefurl="' + list[i].subUrl + '">' + list[i].subTitle + '</a></li>';
+                              if (list[i].subMenu) {
+                                  var lists = list[i].subMenu;
+                                  sublist += '<div  _t_nav="attr' + i + '"  id="attr' + i + '" style="display: none;"><ul class="cell_1">'
+                                  for (var k = 0; k < lists.length; k++) {
+                                      sublist += '<li  index="li_' + i + k + '">' + lists[k].subTitle + '</li>';
+                                  }
+                                  if (list[i].list != null) {
+                                      var sublists = list[i].list;
+                                      for (var k = 0; k < sublists.length; k++) {
+                                          sublist += '<li><a class="btna" _navId="' + sublists[k].navId + '"  _name="' + sublists[k].aId + '">' + sublists[k].title + '</a></li>';
+                                      }
+                                  }
+                                  sublist += '</ul>'
+                                  sublist += '<div class="cell_detail">'
+                                  for (var k = 0; k < lists.length; k++) {
+                                      if (lists[k].list) {
+
+                                          var liststh = lists[k].list;
+                                          k == 0 ? sublist += '<div  id="li_' + i + k + '"><ul>' : sublist += '<div class="hide" id="li_' + i + k + '"><ul>';
+                                          for (var j = 0; j < liststh.length; j++) {
+
+                                               if(liststh[j].title=='机器大数据分析平台'){
+                                                  sublist += '<li><a style="color:#fff" class="btna" href="../sinosecop/index.html">' + liststh[j].title + '</a></li>';
+                                              }else{
+                                                  sublist += '<li><a class="btna" _navId="' + liststh[j].navId + '"  _name="' + liststh[j].aId + '">' + liststh[j].title + '</a></li>';
+
+                                              }
+                                          }
+                                          sublist += '</ul></div>'
+                                      }
+                                  }
+                                  sublist += '</div>'
+                                  sublist += '</div>'
+                              }
+                              if (list[i].subMenu == null && list[i].list != null) {
+                                  sublist += '<div  _t_nav="attr' + i + '"  id="attr' + i + '" style="display: none;"><ul class="cell_1">'
+                                  var sublists = list[i].list;
+                                  for (var k = 0; k < sublists.length; k++) {
+                                      sublist += '<li><a class="btna" _navId="' + sublists[k].navId + '"  _name="' + sublists[k].aId + '">' + sublists[k].title + '</a></li>';
+                                  }
+                                  sublist += '</ul></div>'
+                              }
+                
+                            
+                              //footer菜单导航
+                              if (i > 0 && list[i].subTitle != "公司客户" &&  list[i].subTitle != "招贤纳士") {
+                                 
+                                if (list[i].subMenu) {
+                                  var lists = list[i].subMenu;
+                                  for (var k = 0; k < lists.length; k++) {
+                                   
+                                    if(i == 1){
+                                      if(k == 0){
+                                        lists[k].list.push({"title":'招贤纳士'})
+                                        footlist.push(lists[k])
+                                      }
+                                     
+                                    }
+                                    if(i == 2){
+                                  
+                                  footlist.push(lists[k])
+                               
+                                    }
+                                    
+                                  }
+                                }
+  
+                           
+                              
+                              }
+                             
+                              $('.ememem').append(menuItem[i]);
+                          }
+          
+          for(var i = 0 ; i < footlist.length;i++){
+            if(i == 0){
+              footerlist += ' <li>' +
+                  '<p>' + footlist[i].subTitle +'</p>' +
+                  '<ul class="detaillist">'
+              for (var k = 0; k < footlist[i].list.length; k++) {
+               if(k ==  footlist[i].list.length - 1){
+                 footerlist += '<li><a  href="https://jobs.51job.com/all/co3826767.html" target="_blank">' + footlist[i].list[k].title + '</a></li>';
+               }else{
+                 footerlist += '<li><a  href="../articleDetail/articleDetail.html?id='+footlist[i].list[k].aId+'&&navid='+footlist[i].list[k].navId+'">' + footlist[i].list[k].title + '</a></li>';
+               }
+            
+              }
+              footerlist +=   '</ul>'
+              footerlist += '</li>'
+            }else{
+              footerlist += ' <li>' +
+                  '<p>' + footlist[i].subTitle +'</p>' +
+                  '<ul class="detaillist">'
+              for (var k = 0; k < footlist[i].list.length; k++) {
+    
+                footerlist += '<li><a  href="../articleDetail/articleDetail.html?id='+footlist[i].list[k].aId+'&&navid='+footlist[i].list[k].navId+'">' + footlist[i].list[k].title + '</a></li>';
+              }
+              footerlist +=   '</ul>'
+              footerlist += '</li>'
+            }
+        
+          }
+  
+            
+                          $("#menuLevel1").append(str);
+                          $("#menuLevel2").html(sublist);
+                          $(".titlelist").html(footerlist);
+            
+            $('#menuLevel1>li').hover(function () {
+              $(this).addClass("navhover").siblings().removeClass('navhover');
+            })
+
+            //下拉菜单
+            var qcloud = {};
+            $('[_t_nav]').hover(function () {
+              var _nav = $(this).attr('_t_nav');
+              clearTimeout(qcloud[_nav + '_timer']);
+              qcloud[_nav + '_timer'] = setTimeout(function () {
+                $('#' + _nav).stop(true, true).slideDown(200);
+              }, 150);
+            }, function () {
+              var _nav = $(this).attr('_t_nav');
+              clearTimeout(qcloud[_nav + '_timer']);
+              qcloud[_nav + '_timer'] = setTimeout(function () {
+                $('#' + _nav).stop(true, true).slideUp(200);
+              }, 150);
+            });
+            $('.cell_1>li').hover(function () {
+              $(this).addClass('cell_li');
+              var _id = $(this).attr('index');
+              $('#' + _id).removeClass("hide").siblings().addClass('hide');
+              
+            }, function () {
+              $(this).removeClass('cell_li');
+            });
+            
+            //菜单文章点击跳转
+            $(".navFisrt").click(function () {
+              var id = $(this).attr("_id");
+              var hrefurl = $(this).attr("hrefurl");
+              window.location.href = hrefurl + "?id=" + id;
+            })
+            
+            //菜单文章点击跳转
+            $(".btna").click(function () {
+              var id = $(this).attr("_name");
+              var navid = $(this).attr("_navId");
+              window.location.href = "../articleDetail/articleDetail.html?id=" + id + '&&navid=' + navid;
+            })
+          }
+        }
+    );
+  });
+</script>

@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>相孚科技</title>
+  <link href="../Public/Web/css/index2016.css" type="text/css" rel="stylesheet"/>
+  <link href="../Public/Web/css/head.css" type="text/css" rel="stylesheet"/>
+  <link href="../Public/Web/css/footer.css" type="text/css" rel="stylesheet"/>
+  <link href="../Public/Web/css/index.css" type="text/css" rel="stylesheet"/>
+  <link href="../Public/Web/css/animate.min.css" type="text/css" rel="stylesheet"/>
+  <link rel="stylesheet" href="Public/Web/js/bootstrap/dist/css/bootstrap.css">
+  <script src="../Public/Web/js/jquery/dist/jquery-1.9.1.js"></script>
+  <script src="Public/Web/js/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--<script src="../Public/Web/js/jquery-1.7.2.js"></script>-->
+  <script src="../index/index.js"></script>
+  
+  
+  <!--<script src="../Public/Web/js/nav.js"></script>-->
+  <!--<script src="../Public/Web/js/footer.js"></script>-->
+  <style>
+    body{
+      font-family: '微软雅黑', Arial;!important;
+    }
+    .navhover a {
+      
+      border-bottom: 3px solid #ccc;
+      padding-bottom: 14px;
+    }
+    
+    #menu0 a {
+      border-bottom: 3px solid #24AEF2;
+      padding-bottom: 14px;
+    }
+    
+    #pic li {
+      width: 100%;
+      height: 330px;
+      background-size: cover;
+    }
+    
+    @media only screen and (min-width: 1920px) {
+      #pic li {
+        width: 100%;
+        height: 475px;
+        background-size: cover;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="section1" init="true" class="section section1">
+  <div id="navbar"></div>
+  
+  <!--banner-->
+  <div class="banner">
+    <ul class="pic" id="pic">
+   
+    </ul>
+    <ul class="list" id="list_pic">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
+<!--main-->
+<div id="section2" class="section section2">
+  <div class="wrap">
+    <div class="home_title">
+      <a>
+        <img src="Public/Web/images/advantage.png">
+      </a>
+    </div>
+
+    <div class="serve_column">
+      <ul class="fix">
+        <li class="c1">
+          <dl>
+            <dt class="pic">
+              <img src="Public/Web/images/advantage/customer.png"
+                   alt="品牌官网设计">
+            </dt>
+            <dt class="t">
+            <p class="tt-style">
+              专注于客户
+            </p>
+            </dt>
+            <dd>
+              优先满足客户需求
+            </dd>
+            <dd>
+              引入CRM系统化管理客户资源
+            </dd>
+            <dd>
+              提供全面的解决方案
+            </dd>
+          </dl>
+        </li>
+        <li class="c2">
+          <dl>
+            <dt class="pic">
+              <img src="Public/Web/images/advantage/service.png">
+            </dt>
+            <dt class="t">
+            <p class="tt-style">专注于服务</p>
+            </dt>
+            <dd>
+              优质的服务能力
+            </dd>
+            <dd>
+              个性化的服务特色
+            </dd>
+            <dd>
+              完善的售前、售中、售后支持
+            </dd>
+          </dl>
+        </li>
+        <li class="c3">
+          <dl>
+            <dt class="pic">
+              <img src="Public/Web/images/advantage/technology.png">
+            </dt>
+            <dt class="t">
+            <p class="tt-style">
+              专注于技术
+            </p>
+            </dt>
+            <dd>
+              优秀的技术团队
+            </dd>
+            <dd>
+              专业的技术指导
+            </dd>
+            <dd>
+              自主研发和产品代理结合
+            </dd>
+          </dl>
+        </li>
+      </ul>
+      <div class="c">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="section3" init="true" class="section section2">
+  <div class="wrap">
+    <div class="home_title" id="home_title">
+      <a>
+        <img src="Public/Web/images/aboutxf.png" alt=""/>
+      </a>
+    </div>
+
+    
+    
+    <div class="serve_column">
+      <ul class="fix" id="findTopCase">
+
+   
+      </ul>
+      <div class="c">
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--case-->
+<!-- solutions -->
+<div id="section5" init="false" class="section section4">
+  <div class=" home_solutions">
+    <div class="solutions_title">
+      <a>
+        <img src="../Public/Web/images/xfbusiness.png">
+      </a>
+    </div>
+
+    
+    <div class="home_solutions_list_inner">
+      <ul class="business">
+  
+      </ul>
+    
+    </div>
+  
+  
+  </div>
+</div>
+<div id="section6" init="false" class="section section6">
+  <div class="home_partner">
+    <ul class="piclist">
+ 
+    
+    </ul>
+  </div>
+  <div id="footer"></div>
+</div>
+
+</body>
+<script>
+  $("#findTopCase").on("click",'.text',function () {
+    var link = $(this).attr("link")
+    window.location.href = link
+  })
+  
+  $(".business").on("click",'.businesstext', function () {
+    var link = $(this).attr("id")
+    window.location.href = link
+  })
+  $(".piclist").on("click",".imgbox img",function () {
+    var link = $(this).attr("link")
+    window.location.href = link
+  })
+
+</script>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>相孚科技</title>
+  <link href="../Public/Web/css/head.css" type="text/css" rel="stylesheet"/>
+  <link href="../Public/Web/css/footer.css" type="text/css" rel="stylesheet"/>
+  <link href="../Public/Web/css/style.css" type="text/css" rel="stylesheet"/>
+  <link href="../Public/Web/css/index.css" type="text/css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../Public/Web/js/bootstrap/dist/css/bootstrap.css">
+  <script src="../Public/Web/js/jquery/dist/jquery-1.9.1.js"></script>
+  <script src="../Public/Web/js/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--<script src="../Public/Web/js/nav.js"></script>-->
+  <!--<script src="../Public/Web/js/footer.js"></script>-->
+  <style>
+    body{
+      font-family: '微软雅黑', Arial;!important;
+    }
+    #menu4 a {
+      border-bottom: 3px solid #24AEF2;
+    }
+    
+    .inside_banner_about {
+      width: 100%;
+      height: 330px;
+      background: url("../Public/Web/images/recruit/banner.png");
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      margin-top: -3px;
+    }
+    
+    .home_title h2 {
+      color: #404040;
+    }
+    
+    .solid {
+      width: 144px;
+      height: 4px;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+    
+    .solid span {
+      width: 33.3%;
+      height: 100%;
+      float: left;
+      background-color: #e6e6e6;
+    }
+    
+    .solid span:nth-child(2) {
+      background-color: #24AEF2;
+    }
+    
+    .recruitlist{
+      width: 1160px;
+      margin: 0 auto;
+      overflow: hidden;
+      margin-bottom: 100px;
+    }
+    .recruitlist th{
+      height: 60px;
+      width: 25%;
+      background-color: #24AEF2;
+      border-right: 2px solid #fff;
+      color: #fff;
+      font-size: 18px;
+      padding-left: 20px;
+      font-weight: 400;
+    }
+    .recruitlist th:nth-last-child(1){
+      border-right: none;
+    }
+    .recruitlist tbody{
+      border: 2px solid #e3e3e3;
+      border-top: none;
+    }
+    .recruitlist tbody tr{
+      border-bottom: 1px dashed #e1e1e1 ;
+    }
+    .recruitlist tbody tr:nth-last-child(1){
+      border-bottom: none;
+    }
+    .recruitlist tbody td{
+      width: 25%;
+      height: 50px;
+      padding-left: 20px;
+      font-size: 14px;
+      color:#707070;
+    }
+    .recruitlist tbody tr:nth-child(1) td:nth-child(1) a{
+      color:#24aef2;
+    }
+    @media screen and (min-width: 981px) and (max-width: 1920px) {
+      body{
+        min-width: 1200px;
+      }
+    }
+    @media only screen and (max-width: 980px) {
+      body {
+        width: 980px;
+      }
+      
+      .inside_banner_about {
+        width: 100%;
+        height: 330px;
+        background: url("../Public/Web/images/recruit/banner.png");
+        background-size: cover;
+      }
+      .recruitlist{
+        width: 960px;
+        margin: 0 auto;
+        overflow: hidden;
+        margin-bottom: 100px;
+      }
+    }
+    
+    @media only screen and (min-width: 1920px) {
+      .inside_banner_about {
+        width: 100%;
+        height: 470px;
+        background: url("../Public/Web/images/recruit/banner.png");
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+        margin-top: -3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div id="section1" init="true" class="section section1">
+  <div id="navbar"></div>
+  <!--banner-->
+  <div class="inside_banner_about">
+  
+  </div>
+</div>
+
+<div class="ser_project">
+  <div class="home_title">
+    <h2>招贤纳士</h2>
+    <div class="solid">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <table class="recruitlist">
+    <thead>
+    <tr>
+      <th>职位名称</th>
+      <th>所属部门</th>
+      <th>招聘人数</th>
+      <th>工作地点</th>
+    </tr>
+    </thead>
+    <tbody class="recruitdata">
+    
+    </tbody>
+  </table>
+</div>
+<div id="footer"></div>
+</div>
+</body>
+<script>
+  $(document).ready(function () {
+    
+    $("#navbar").load("/common/navbar.html"+'?tmp='+Math.random().toString());
+    
+    $("#footer").load("/common/footer.html"+'?tmp='+Math.random().toString());
+    
+    $.ajax({
+      url : '../Public/json/recruit.json',
+      type : "get",
+      datatype : 'json',
+      crossDomain: true === !(document.all),
+      success:function (res) {
+     
+        var list = res.list;
+      
+        var html = ''
+        for(var i = 0 ;i < list.length;i++){
+          if(i == 0){
+            html += ' <tr>' +
+                '<td>' +
+                '<a href="https://jobs.51job.com/shanghai-ypq/101642667.html?s=04" class="link" target="_bank">'+list[i].position+'</a>' +
+                '</td> ' +
+                '<td>'+list[i].depart+'</td>' +
+                ' <td>'+list[i].num+'</td>' +
+                ' <td>'+list[i].location+'</td>' +
+                ' </tr>'
+          }else{
+            html += ' <tr>' +
+                '<td>' +
+                '<p>'+list[i].position+'</p>' +
+                '</td> ' +
+                '<td>'+list[i].depart+'</td>' +
+                ' <td>'+list[i].num+'</td>' +
+                ' <td>'+list[i].location+'</td>' +
+                ' </tr>'
+          }
+        }
+        $(".recruitdata").html(html)
+        
+      }
+    })
+  })
+</script>
+</html>
